@@ -1,7 +1,10 @@
+import Banner from "../Banner/Banner";
+import './Home.css'
+
 const Home = () => {
     return (
-        <div>
-            <h1>Lets Begin 🔥</h1>
+        <div className="custom-gradient">
+           <Banner></Banner>
         </div>
     );
 };
