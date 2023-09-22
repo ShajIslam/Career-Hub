@@ -18,7 +18,7 @@ const JobCategoryList = () => {
             <h1 className="text-5xl font-extrabold my-5">Job Category List</h1>
             <p className="text-sm text-[#757575]">Explore thousands of job opportunities with all the information you need. Its your future</p>
             </div>
-            <div className="grid grid-cols-4 my-12 ">
+            <div className="grid grid-cols-4 my-12 mt-12">
             {
                 jobsCategories.map((jobsCategory,idx) => <JobsCategory key={idx} jobsCategory={jobsCategory} ></JobsCategory>)
             }

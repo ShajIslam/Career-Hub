@@ -9,6 +9,7 @@ const Home = () => {
            <Banner></Banner>
            <div className="max-w-6xl mx-auto">
            <JobCategoryList></JobCategoryList>
+           <br />
            <FeaturedJobs></FeaturedJobs>
            </div>
         </div>

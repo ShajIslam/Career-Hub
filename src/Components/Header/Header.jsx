@@ -1,4 +1,5 @@
-import { NavLink } from "react-router-dom";
+import { NavLink} from "react-router-dom";
+
 
 
 
@@ -7,10 +8,12 @@ const Header = () => {
 
     const links = <>
        
-        <li><NavLink to='/'>Home</NavLink></li>
-        <li><NavLink to='/appliedJobs'>Applied Jobs</NavLink></li>
-        <li><NavLink to='/statistics'>Statistics</NavLink></li>
-        <li><NavLink to='/blog'>Blog</NavLink></li>
+       <div className="flex gap-5 text-md">
+       <NavLink to='/'>Home</NavLink>
+        <NavLink to='/appliedJobs'>Applied Jobs</NavLink>
+        <NavLink to='/statistics'>Statistics</NavLink>
+        <NavLink to='/blog'>Blog</NavLink>
+       </div>
     
     </>
 
