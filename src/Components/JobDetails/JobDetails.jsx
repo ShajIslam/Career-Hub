@@ -14,7 +14,7 @@ const JobDetails = () => {
     
   const job= jobs.find(job => job.id ===idInt)
  const {job_description,job_responsibility,job_title, educational_requirements,experiences, salary, contact_information} = job;
-  console.log(job);
+  
 
   
     const handleApply=(id)=>{
@@ -24,8 +24,6 @@ const JobDetails = () => {
         
 
     }
-
-
     return (
         <div>
           <div className="jobDetails-bg">
@@ -74,10 +72,7 @@ const JobDetails = () => {
             </div>
             <div className="w-full">
                 <br />
-            <button onClick={()=>handleApply(id)} type="button" className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Apply</button>
-           
-
-          
+            <button onClick={()=>handleApply(idInt)} type="button" className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Apply</button>
             
             </div>
             
