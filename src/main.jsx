@@ -9,6 +9,7 @@ import Statistics from './Components/Statistics/Statistics';
 import Blog from './Components/Blog/Blog';
 import ErrorElement from './Components/ErrorElement/ErrorElement';
 import JobDetails from './Components/JobDetails/JobDetails';
+import Register from './Register/Register';
 
 
 const router = createBrowserRouter([
@@ -42,7 +43,12 @@ const router = createBrowserRouter([
         path: '/appliedJobs',
         
         element: <AppliedJobs></AppliedJobs>
-      }
+      },
+      {
+        path: '/register',
+        element: <Register></Register>
+      },
+    
      
     ]
   },

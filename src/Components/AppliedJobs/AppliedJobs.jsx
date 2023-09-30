@@ -24,7 +24,6 @@ const AppliedJobs = () => {
     }
     
 
-
     useEffect(()=>{
         fetch('/jobs.json')
         .then(response=> response.json())

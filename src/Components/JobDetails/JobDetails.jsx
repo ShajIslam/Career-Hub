@@ -1,11 +1,12 @@
-import { json, useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 import './JobDetails.css';
 import './JobDetails.css'
 import { AiOutlineDollarCircle, AiOutlinePhone, AiOutlineMail} from 'react-icons/ai';
 import { BiTask } from 'react-icons/bi';
 import { CiLocationOn} from 'react-icons/ci';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import { saveJobApplication } from "../../Utilites/LocalStorage";
+import Swal from 'sweetalert2'
 
 const JobDetails = () => {
     const jobs = useLoaderData();
@@ -21,8 +22,13 @@ const JobDetails = () => {
         
         saveJobApplication(id);
         // toast.success('Added to database', {position: "top-right"});
-        
-
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'You have applied successfully',
+            showConfirmButton: false,
+            timer: 1500
+          })
     }
     return (
         <div>
