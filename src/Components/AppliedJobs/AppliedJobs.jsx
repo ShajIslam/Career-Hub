@@ -7,42 +7,46 @@ import { getStoredJobApplication } from "../../Utilites/LocalStorage";
 
 const AppliedJobs = () => {
 
-    const [jobs, setJobs] = useState([]);
+    
     const [appliedJobs, setAppliedJobs] = useState([])
     const [filterJobs, setFilterJobs] = useState([]);
 
     const handleJobsFilter = filter=>{
+
         if(filter ==='all'){
-            setFilterJobs(appliedJobs)
-        }else if(filter ==='remote'){
-            const remoteJobs = appliedJobs.filter(job =>job.remote_or_onsite ==='Remote')
-            setFilterJobs(remoteJobs)
-        }else if(filter === 'onsite'){
-            const onsiteJobs = appliedJobs.filter(job =>job.remote_or_onsite ==='Onsite')
-            setFilterJobs(onsiteJobs)
-        }
+                    setAppliedJobs(filterJobs)
+                }else if(filter ==='remote'){
+                    const remoteJobs = filterJobs.filter(job =>job.remote_or_onsite ==='Remote')
+                    setAppliedJobs(remoteJobs)
+                }else if(filter === 'onsite'){
+                    const onsiteJobs = filterJobs.filter(job =>job.remote_or_onsite ==='Onsite')
+                    setAppliedJobs(onsiteJobs)
+                }
+
     }
     
 
     useEffect(()=>{
+        console.log('okay')
         fetch('/jobs.json')
         .then(response=> response.json())
-        .then(data => setJobs(data))
-
-        const storedJobId =getStoredJobApplication();
-        if(jobs.length>0){
-            const jobsApplied = [];
-            for(const id of storedJobId){
-                const job = jobs.find(job =>job.id===id)
-                if(job){
-                    jobsApplied.push(job);
+        .then(data => {
+            const storedJobId =getStoredJobApplication();
+            if(data.length>0){
+                const jobsApplied = [];
+                for(const id of storedJobId){
+                    const job = data.find(job =>job.id===id)
+                    if(job){
+                        jobsApplied.push(job);
+                    }
                 }
+                setAppliedJobs(jobsApplied);
+                setFilterJobs(jobsApplied);
+               
             }
-            setAppliedJobs(jobsApplied);
-           
-        }
+        })
 
-    }, [appliedJobs, jobs])
+    }, [])
 
 
     return (
@@ -63,7 +67,7 @@ const AppliedJobs = () => {
 </details>
              
            {
-                filterJobs.map((job,idx )=> <AppliedJobCard key={idx} job={job}></AppliedJobCard>)
+                appliedJobs.map((job,idx )=> <AppliedJobCard key={idx} job={job}></AppliedJobCard>)
             }
            </div>
         </div>

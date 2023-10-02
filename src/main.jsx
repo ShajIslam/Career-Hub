@@ -1,4 +1,3 @@
-import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
 import {createBrowserRouter,RouterProvider,} from "react-router-dom";
@@ -10,6 +9,9 @@ import Blog from './Components/Blog/Blog';
 import ErrorElement from './Components/ErrorElement/ErrorElement';
 import JobDetails from './Components/JobDetails/JobDetails';
 import Register from './Register/Register';
+import AuthProvider from './AuthProvider/AuthProvider';
+import LogIn from './Components/LogIn/LogIn';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
 
 
 const router = createBrowserRouter([
@@ -22,10 +24,7 @@ const router = createBrowserRouter([
         path: '/',
         element: <Home></Home>
       },
-      {
-        path:'/appliedJobs',
-        element: <AppliedJobs></AppliedJobs>
-      },
+      
       {
         path: '/statistics',
         element: <Statistics></Statistics>
@@ -36,19 +35,26 @@ const router = createBrowserRouter([
       },
       {
         path:'/job/:id',
-        element: <JobDetails></JobDetails>,
+        element:<PrivateRoute>
+           <JobDetails></JobDetails>
+        </PrivateRoute>,
         loader: ()=>fetch('../public/jobs.json')
       },
       {
         path: '/appliedJobs',
-        
-        element: <AppliedJobs></AppliedJobs>
+        element: <PrivateRoute>
+        <AppliedJobs></AppliedJobs>
+        </PrivateRoute>
       },
       {
         path: '/register',
         element: <Register></Register>
       },
-    
+      {
+        path: '/login',
+        element: <LogIn></LogIn>
+      }
+      
      
     ]
   },
@@ -57,7 +63,7 @@ const router = createBrowserRouter([
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  <AuthProvider>
     <RouterProvider router={router} />
-  </React.StrictMode>,
+    </AuthProvider>,
 )
